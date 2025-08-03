@@ -1,0 +1,53 @@
+body {
+    background-image: url("background.jpg");
+    background-size: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    margin: 0;
+    padding-top: 20px;
+}
+
+#grid {
+    border-radius: 20px;
+    border: 2px solid #000000;
+    display: grid;
+    grid-template-columns: repeat(40, 30px);
+    grid-template-rows: repeat(20,30px);
+}
+
+#grid div {
+    width: 30px;
+    height: 30px;
+    border: 2px solid #5c2323;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.black {
+    background-color: #000000;
+}
+
+.cube1 {
+    background-image: url("cube1.png");
+    background-size: 100%;
+}
+
+.cube2 {
+    background-image: url("cube2.png");
+    background-size: 100%;
+}
+
+.cube3 {
+    background-image: url("cube3.png");
+    background-size: 100%;
+}
+
+.cube4 {
+    background-image: url("cube4.png");
+    background-size: 100%;
+}
