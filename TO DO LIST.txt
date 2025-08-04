@@ -1,0 +1,7 @@
+TO DO LIST
+
+- add event listener
+- add movement
+- add detecting edges
+- add stacking
+- add more boxes

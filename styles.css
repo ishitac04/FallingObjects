@@ -11,7 +11,7 @@ body {
 
 #grid {
     border-radius: 20px;
-    border: 2px solid #000000;
+    border: 0px solid #000000;
     display: grid;
     grid-template-columns: repeat(40, 30px);
     grid-template-rows: repeat(20,30px);
@@ -20,7 +20,7 @@ body {
 #grid div {
     width: 30px;
     height: 30px;
-    border: 2px solid #5c2323;
+    border: 0px solid #5c2323;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -49,5 +49,43 @@ body {
 
 .cube4 {
     background-image: url("cube4.png");
+    background-size: 100%;
+}
+
+
+.suitcase1 {
+    background-image: url("suitcase1.png");
+    background-size: 100%;
+}
+.suitcase2 {
+    background-image: url("suitcase2.png");
+    background-size: 100%;
+}
+.blank {
+    background-image: url("blank\ .png");
+    background-size: 100%;
+}
+.suitcase4 {
+    background-image: url("suitcase4.png");
+    background-size: 100%;
+}
+.suitcase5 {
+    background-image: url("suitcase5.png");
+    background-size: 100%;
+}
+.suitcase6 {
+    background-image: url("suitcase6.png");
+    background-size: 100%;
+}
+.edge {
+    background-image: url("edge.png");
+    background-size: 100%;
+}
+.suitcase21 {
+    background-image: url("suitcase21.png");
+    background-size: 100%;
+}
+.suitcase22 {
+    background-image: url("suitcase22.png");
     background-size: 100%;
 }
