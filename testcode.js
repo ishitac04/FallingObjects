@@ -8,6 +8,10 @@ let check;
 let red=0;
 let blue=0;
 let green=0;
+let suitcase;
+let cube1;
+let clock;
+let score=0;
 
 function generateGrid() {
     const board = document.getElementById('grid');
@@ -74,6 +78,42 @@ function eraseCube(i) {
         }
 }
 
+function checkSuitcase() {
+    const suitcaseBlocks = ["suitcase1","suitcase2","blank","suitcase4","suitcase5","suitcase6", "red"]
+    for (let n=0; n < suitcaseBlocks.length; n++) {
+        for (let pos=0; pos < 6; pos++) {
+        if (boxes[position+80+pos].classList.contains(suitcaseBlocks[n])) {
+            return true;
+        }
+        }
+    }
+    return false;
+}
+
+function checkCube() {
+    const cubeBlocks = ["cube1","cube2","cube3","cube4", "blue"]
+    for (let n=0; n < cubeBlocks.length; n++) {
+        for (let pos=0; pos < 4; pos++) {
+        if (boxes[position+80+pos].classList.contains(cubeBlocks[n])) {
+            return true;
+        }
+        }
+    }
+    return false;
+}
+
+function checkClock() {
+    const clockBlocks = ["clock1","clock2","clock3","clock4", "green"]
+    for (let n=0; n < clockBlocks.length; n++) {
+        for (let pos=0; pos < 4; pos++) {
+        if (boxes[position+80+pos].classList.contains(clockBlocks[n])) {
+            return true;
+        }
+        }
+    }
+    return false;
+}
+
 function checker() {
     const solid = ["cube1","cube2","suitcase1","suitcase2","blank","suitcase4","suitcase5","suitcase6","red","blue","green","clock1","clock2","redi","bluei","greeni"];
 
@@ -84,120 +124,29 @@ function checker() {
     for (let i=0; i < solid.length; i++) {
     if (object == 1) { 
         if (boxes[position+40].classList.contains(solid[i])) {
-            if (solid[i]=="red" || solid[i]=="redi") {
-                alert(boxes[position+40].classList)
-                alert("GAME OVER! That should have been placed in the blue section :( ")
-            } else if (solid[i]=="blue" || solid[i]=="bluei") {
-                blue=blue+1;
-                boxes[position+40].classList.add("bluei");
-                createCube(position-40);
-            } else if (solid[i]=="green" || solid[i]=="greeni") {
-                alert("GAME OVER! That should have been placed in the blue section :( ")
-            }
             return true;
         } else if (boxes[position+41].classList.contains(solid[i])) {
-            if (solid[i]=="red" || solid[i]=="redi") {
-                alert("GAME OVER! That should have been placed in the blue section :( ")
-            } else if (solid[i]=="blue" || solid[i]=="bluei") {
-                blue=blue+1;
-                boxes[position+41].classList.add("bluei");
-                createCube(position-40);
-            } else if (solid[i]=="green" || solid[i]=="greeni") {
-                alert("GAME OVER! That should have been placed in the blue section :( ")
-            }
             return true;
         }
-    } else if (object == 0) { 
+    } else if (object == 0) {
         if (boxes[position+40].classList.contains(solid[i])) {
-            if (solid[i]=="red" || solid[i]=="redi") {
-                red=red+1;
-                boxes[position+40].classList.add("redi");
-                createCube(position-40);
-            } else if (solid[i]=="blue" || solid[i]=="bluei") {
-                alert("GAME OVER! That should have been placed in the red section :( ")
-            } else if (solid[i]=="green" || solid[i]=="greeni") {
-                alert("GAME OVER! That should have been placed in the red section :( ")
-            }
-            return true;; 
+            return true;
         } else if (boxes[position+41].classList.contains(solid[i])) {
-            if (solid[i]=="red" || solid[i]=="redi") {
-                red=red+1;
-                boxes[position+41].classList.add("redi");
-                createCube(position-40);
-            } else if (solid[i]=="blue" || solid[i]=="bluei") {
-                alert("GAME OVER! That should have been placed in the red section :( ")
-            } else if (solid[i]=="green" || solid[i]=="greeni") {
-                alert("GAME OVER! That should have been placed in the red section :( ")
-            }
-            return true;; 
+            return true;
         } else if (boxes[position+42].classList.contains(solid[i])) {
-            if (solid[i]=="red" || solid[i]=="redi") {
-                red=red+1;
-                boxes[position+42].classList.add("redi");
-                createCube(position-40);
-            } else if (solid[i]=="blue" || solid[i]=="bluei") {
-                alert("GAME OVER! That should have been placed in the red section :( ")
-            } else if (solid[i]=="green" || solid[i]=="greeni") {
-                alert("GAME OVER! That should have been placed in the red section :( ")
-            }
-            return true;; 
+            return true;;
         } else if (boxes[position+43].classList.contains(solid[i])) {
-            if (solid[i]=="red" || solid[i]=="redi") {
-                red=red+1;
-                boxes[position+43].classList.add("redi");
-                createCube(position-40);
-            } else if (solid[i]=="blue" || solid[i]=="bluei") {
-                alert("GAME OVER! That should have been placed in the red section :( ")
-            } else if (solid[i]=="green" || solid[i]=="greeni") {
-                alert("GAME OVER! That should have been placed in the red section :( ")
-            }
-            return true;; 
+            return true; 
         } else if (boxes[position+44].classList.contains(solid[i])) {
-            if (solid[i]=="red" || solid[i]=="redi") {
-                red=red+1;
-                boxes[position+44].classList.add("redi");
-                createCube(position-40);
-            } else if (solid[i]=="blue" || solid[i]=="bluei") {
-                alert("GAME OVER! That should have been placed in the red section :( ")
-            } else if (solid[i]=="green" || solid[i]=="greeni") {
-                alert("GAME OVER! That should have been placed in the red section :( ")
-            }
-            return true;; 
+            return true; 
         } else if (boxes[position+45].classList.contains(solid[i])) {
-            if (solid[i]=="red" || solid[i]=="redi") {
-                red=red+1;
-                boxes[position+45].classList.add("redi");
-                createCube(position-40);
-            } else if (solid[i]=="blue" || solid[i]=="bluei") {
-                alert("GAME OVER! That should have been placed in the red section :( ")
-            } else if (solid[i]=="green" || solid[i]=="greeni") {
-                alert("GAME OVER! That should have been placed in the red section :( ")
-            }
-            return true;; 
+            return true; 
         }
     } else if (object == 2) {
         if (boxes[position+40].classList.contains(solid[i])) {
-            if (solid[i]=="red" || solid[i]=="redi") {
-                alert("GAME OVER! That should have been placed in the green section :( ")
-            } else if (solid[i]=="blue" || solid[i]=="bluei") {
-                alert("GAME OVER! That should have been placed in the green section :( ")
-            } else if (solid[i]=="green" || solid[i]=="greeni") {
-                green=green+1;
-                boxes[position+40].classList.add("greeni");
-                createCube(position-40);
-            }
-            return true;; 
+            return true;
         } else if (boxes[position+41].classList.contains(solid[i])) {
-            if (solid[i]=="red" || solid[i]=="redi") {
-                alert("GAME OVER! That should have been placed in the green section :( ")
-            } else if (solid[i]=="blue" || solid[i]=="bluei") {
-                alert("GAME OVER! That should have been placed in the green section :( ")
-            } else if (solid[i]=="green" || solid[i]=="greeni") {
-                green=green+1;
-                boxes[position+41].classList.add("greeni");
-                createCube(position-40);
-            }
-            return true;; 
+            return true;
         }
     }
     }
@@ -232,13 +181,42 @@ function moveCube() {
     if (positionChecker == 0) {
         eraseCube(position);
         position=position+40;
+
+        if (position > 760) {
+            clearInterval(cubeInterval);
+            createCube(position-40);
+            cube()
+        }
+
         check=checker();
 
     if (check==true) {
         position=position-40;
-
         positionChecker = 1;
         createCube(position);
+        if (object==0) {
+            suitcase=checkSuitcase();
+            if (suitcase == false) {
+                alert("Wrong pile! Game over :(")
+            } else {
+                score=score+1;
+            }
+        } else if (object==1) {
+            cube1=checkCube();
+            if (cube1 == false) {
+                alert("Wrong pile! Game over :(")
+            } else {
+                score=score+1;
+            }
+        } else if (object==2) {
+            clock=checkClock();
+            if (clock == false) {
+                alert("Wrong pile! Game over :(")
+            } else {
+                score=score+1;
+            }
+        }
+        
         clearInterval(cubeInterval);
         cube();
         return;
