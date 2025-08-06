@@ -2,11 +2,12 @@ body {
     background-image: url("background.jpg");
     background-size: 100%;
     display: flex;
-    justify-content: center;
+    flex-direction: center;
     align-items: flex-start;
+    justify-content: center;
     min-height: 100vh;
     margin: 0;
-    padding-top: 20px;
+    font-size: x-large;
 }
 
 #grid {
@@ -110,10 +111,10 @@ body {
     background-size: 100%;
 }
 .red {
-    background-color: red;
+    background-color: rgb(131, 83, 56);
 }
 .blue {
-    background-color: blue;
+    background-color: rgb(255, 0, 0);
 }
 .green {
     background-color: green;
@@ -126,4 +127,25 @@ body {
 }
 .greeni {
     background-size: 100%;
+}
+  
+#score {
+    font-size: 40px;
+    font-weight: bold;
+    color: #000000;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#stats {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    font-size: x-large;
+  }
+
+#title {
+    align-items: center;
+    text-align: center;
+    font-size: larger;
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }

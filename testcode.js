@@ -12,6 +12,7 @@ let suitcase;
 let cube1;
 let clock;
 let score=0;
+const correct = document.getElementById('correct');
 
 function generateGrid() {
     const board = document.getElementById('grid');
@@ -198,22 +199,31 @@ function moveCube() {
             suitcase=checkSuitcase();
             if (suitcase == false) {
                 alert("Wrong pile! Game over :(")
+                location.reload();
             } else {
                 score=score+1;
+                document.getElementById('score').textContent = 'Score: ' + score;
+                correct.play();
             }
         } else if (object==1) {
             cube1=checkCube();
             if (cube1 == false) {
                 alert("Wrong pile! Game over :(")
+                location.reload();
             } else {
                 score=score+1;
+                document.getElementById('score').textContent = 'Score: ' + score;
+                correct.play();
             }
         } else if (object==2) {
             clock=checkClock();
             if (clock == false) {
                 alert("Wrong pile! Game over :(")
+                location.reload();
             } else {
                 score=score+1;
+                document.getElementById('score').textContent = 'Score: ' + score;
+                correct.play();
             }
         }
         
@@ -257,4 +267,12 @@ function cube() {
 generateGrid();
 addBases();
 document.addEventListener('keydown', keyPress);
+
+document.addEventListener('keydown', () => {
+    const bgm = document.getElementById('backgroundmusic');
+    if (bgm.paused) {
+        bgm.play();
+    }
+});
+
 cube();
