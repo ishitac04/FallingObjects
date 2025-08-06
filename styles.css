@@ -52,6 +52,26 @@ body {
     background-size: 100%;
 }
 
+.clock1 {
+    background-image: url("clock1.png");
+    background-size: 100%;
+}
+
+.clock2 {
+    background-image: url("clock2.png");
+    background-size: 100%;
+}
+
+.clock3 {
+    background-image: url("clock3.png");
+    background-size: 100%;
+}
+
+.clock4 {
+    background-image: url("clock4.png");
+    background-size: 100%;
+}
+
 
 .suitcase1 {
     background-image: url("suitcase1.png");
@@ -88,4 +108,13 @@ body {
 .suitcase22 {
     background-image: url("suitcase22.png");
     background-size: 100%;
+}
+.red {
+    background-color: red;
+}
+.blue {
+    background-color: blue;
+}
+.green {
+    background-color: green;
 }

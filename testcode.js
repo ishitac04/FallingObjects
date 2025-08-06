@@ -21,7 +21,7 @@ function createCube(i) {
     boxes[i+1].classList.add("cube2");
     boxes[i+40].classList.add("cube3");
     boxes[i+41].classList.add("cube4");
-    } else {
+    } else if (object==0) {
         boxes[i].classList.add("suitcase1");
         boxes[i+1].classList.add("suitcase2");
         boxes[i+2].classList.add("blank");
@@ -35,43 +35,77 @@ function createCube(i) {
         boxes[i+43].classList.add("suitcase4");
         boxes[i+44].classList.add("suitcase5");
         boxes[i+45].classList.add("suitcase22");
+    } else if (object==2) {
+        boxes[i].classList.add("clock1");
+        boxes[i+1].classList.add("clock2");
+        boxes[i+40].classList.add("clock3");
+        boxes[i+41].classList.add("clock4");
     }
 }
 
 function eraseCube(i) {
-    if (object==1) {
-    boxes[i].classList.remove("cube1");
-    boxes[i+1].classList.remove("cube2");
-    boxes[i+40].classList.remove("cube3");
-    boxes[i+41].classList.remove("cube4");
-    } else {
-        boxes[i].classList.remove("suitcase1");
-    boxes[i+1].classList.remove("suitcase2");
-    boxes[i+2].classList.remove("blank");
-    boxes[i+3].classList.remove("suitcase4");
-    boxes[i+4].classList.remove("suitcase5");
-    boxes[i+5].classList.remove("suitcase6");
-
-    boxes[i+40].classList.remove("blank");
-    boxes[i+41].classList.remove("suitcase2");
-    boxes[i+42].classList.remove("blank");
-    boxes[i+43].classList.remove("suitcase4");
-    boxes[i+44].classList.remove("suitcase5");
-    boxes[i+45].classList.remove("suitcase22");
-    }
+        if (object==1) {
+            boxes[i].classList.remove("cube1");
+            boxes[i+1].classList.remove("cube2");
+            boxes[i+40].classList.remove("cube3");
+            boxes[i+41].classList.remove("cube4");
+        } else if (object==0) {
+            boxes[i].classList.remove("suitcase1");
+            boxes[i+1].classList.remove("suitcase2");
+            boxes[i+2].classList.remove("blank");
+            boxes[i+3].classList.remove("suitcase4");
+            boxes[i+4].classList.remove("suitcase5");
+            boxes[i+5].classList.remove("suitcase6");
+    
+            boxes[i+40].classList.remove("blank");
+            boxes[i+41].classList.remove("suitcase2");
+            boxes[i+42].classList.remove("blank");
+            boxes[i+43].classList.remove("suitcase4");
+            boxes[i+44].classList.remove("suitcase5");
+            boxes[i+45].classList.remove("suitcase22");
+        } else if (object==2) {
+            boxes[i].classList.remove("clock1");
+            boxes[i+1].classList.remove("clock2");
+            boxes[i+40].classList.remove("clock3");
+            boxes[i+41].classList.remove("clock4");
+        }
 }
 
 function checker() {
+    const solid = ["cube1","cube2","suitcase1","suitcase2","blank","suitcase4","suitcase5","suitcase6","red","blue","green","clock1","clock2"];
+
     if (position + 40 >= 800) { 
         return true; 
     }
 
-    const array=["cube1","cube2","suitcase1","suitcase2","blank","suitcase4","suitcase5","suitcase6"];
-    for (let n=0; n < array.length; n++) {
-        if (boxes[position+40].classList.contains(array[n]) || boxes[position+46].classList.contains(array[n]) ||  boxes[position+45].classList.contains(array[n]) || boxes[position+44].classList.contains(array[n]) || boxes[position+43].classList.contains(array[n]) || boxes[position+41].classList.contains(array[n]) || boxes[position+42].classList.contains(array[n])) {
-            return true;
-            break;
+    for (let i=0; i < solid.length; i++) {
+    if (object == 1) { 
+        if (boxes[position+40].classList.contains(solid[i])) {
+            return true; 
+        } else if (boxes[position+41].classList.contains(solid[i])) {
+            return true; 
         }
+    } else if (object == 0) { 
+        if (boxes[position+40].classList.contains(solid[i])) {
+            return true; 
+        } else if (boxes[position+41].classList.contains(solid[i])) {
+            return true; 
+        } else if (boxes[position+42].classList.contains(solid[i])) {
+            return true; 
+        } else if (boxes[position+43].classList.contains(solid[i])) {
+            return true; 
+        } else if (boxes[position+44].classList.contains(solid[i])) {
+            return true; 
+        } else if (boxes[position+45].classList.contains(solid[i])) {
+            return true; 
+        }
+    } else if (object == 2) {
+        if (boxes[position+40].classList.contains(solid[i])) {
+            return true; 
+        } else if (boxes[position+41].classList.contains(solid[i])) {
+            return true; 
+        }
+    }
     }
     return false;
 }
@@ -103,12 +137,7 @@ function moveCube() {
         check=checker();
 
     if (check==true) {
-        let col = position % 40;
-        let row = Math.floor(position / 40);
-        position = (row-1) * 40 + col;
-
-        columnHeights[col] = row - 1;
-        columnHeights[col+1] = row - 1;
+        position=position-40;
 
         positionChecker = 1;
         createCube(position);
@@ -120,11 +149,7 @@ function moveCube() {
     createCube(position);
     console.log(position);
     if (position >= 760) {
-        let col = position % 40;
-        let row=Math.floor(position/40);
         console.log("in loop");
-        columnHeights[col] = row;
-        columnHeights[col+1] = row;
         positionChecker = 1;
         clearInterval(cubeInterval);
         cube();
@@ -147,38 +172,10 @@ function keyPress(event) {
 }
 
 function cube() {
-    object = Math.floor(Math.random()*2);
+    object = Math.floor(Math.random()*3);
     position = Math.floor(Math.random()*40);
     positionChecker=0;
     cubeInterval = setInterval(moveCube, 200);
-}
-function suitcase() {
-    suitcaseposition = Math.floor(Math.random()*40);
-    SuitcasepositionChecker=0
-    suitcaseInterval = setInterval(moveSuitcase, 200)
-}
-
-function makeSuitcase(i) {
-    boxes[i].classList.add("suitcase1");
-    boxes[i+1].classList.add("suitcase2");
-    boxes[i+2].classList.add("blank");
-    boxes[i+3].classList.add("suitcase4");
-    boxes[i+4].classList.add("suitcase5");
-    boxes[i+5].classList.add("suitcase6");
-
-    boxes[i+40].classList.add("edge");
-    boxes[i+41].classList.add("suitcase2");
-    boxes[i+42].classList.add("blank");
-    boxes[i+43].classList.add("suitcase4");
-    boxes[i+44].classList.add("suitcase5");
-    boxes[i+45].classList.add("suitcase22");
-
-    boxes[i+80].classList.add("blank");
-    boxes[i+81].classList.add("suitcase2");
-    boxes[i+82].classList.add("blank");
-    boxes[i+83].classList.add("suitcase4");
-    boxes[i+84].classList.add("suitcase5");
-    boxes[i+85].classList.add("suitcase22");
 }
 
 generateGrid();

@@ -1,7 +1,5 @@
 TO DO LIST
 
-- add event listener
-- add movement
-- add detecting edges
-- add stacking
-- add more boxes
+- add bases
+- add order generation
+- add base detection
